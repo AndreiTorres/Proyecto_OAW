@@ -10,16 +10,18 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    
+    <link rel="stylesheet" href="css/style.css">
     <title>RSS Feed</title>
   </head>
   <body>
     <header id="cabecera">
       <section id="buscador">
-        <input type="text" name="" id="" placeholder="Ingresa texto" />
-        <button>Buscar</button>
+        <input type="text" name="" id="campo_buscar" placeholder="Ingresa texto" />
+        <button id="btnBuscar">Buscar</button>
       </section>
       <section id="filtro">
-        <select name="" id="">
+        <select name="" id="selectOrden">
           <option value="fecha">Fecha</option>
           <option value="titulo">Titulo</option>
           <option value="url">URL</option>
@@ -31,38 +33,164 @@
 
     <main>
       <section id="sec_enlaces">
-        <img
+        <div class="div_agregar">
+          <img
           src="recursos/agregar.svg"
           alt="*"
           width="30"
           data-toggle="modal"
           data-target="#exampleModal"
         />
+        </div>
+       
+        <div class="div_lista">
+          <article class="enlaces">
+            <h5><a href="">BBC News - World</a></h5>
+            <svg id="btnEliminar" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+      width="30" height="30"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M74.53333,17.2c-1.53406,-0.02082 -3.01249,0.574 -4.10468,1.65146c-1.09219,1.07746 -1.70703,2.54767 -1.70704,4.08187h-34.32161c-2.06765,-0.02924 -3.99087,1.05709 -5.03322,2.843c-1.04236,1.78592 -1.04236,3.99474 0,5.78066c1.04236,1.78592 2.96558,2.87225 5.03322,2.843h103.2c2.06765,0.02924 3.99087,-1.05709 5.03322,-2.843c1.04236,-1.78592 1.04236,-3.99474 0,-5.78066c-1.04236,-1.78592 -2.96558,-2.87225 -5.03322,-2.843h-34.32161c-0.00001,-1.53421 -0.61486,-3.00442 -1.70704,-4.08187c-1.09219,-1.07746 -2.57061,-1.67228 -4.10468,-1.65146zM34.4,45.86667v91.73333c0,6.33533 5.13133,11.46667 11.46667,11.46667h80.26667c6.33533,0 11.46667,-5.13133 11.46667,-11.46667v-91.73333z"></path></g></g></svg>
+        </article>
+
+        <article class="enlaces">
+          <h5><a href="">BBC News - World</a></h5>
+          <svg id="btnEliminar"xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+    width="30" height="30"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M74.53333,17.2c-1.53406,-0.02082 -3.01249,0.574 -4.10468,1.65146c-1.09219,1.07746 -1.70703,2.54767 -1.70704,4.08187h-34.32161c-2.06765,-0.02924 -3.99087,1.05709 -5.03322,2.843c-1.04236,1.78592 -1.04236,3.99474 0,5.78066c1.04236,1.78592 2.96558,2.87225 5.03322,2.843h103.2c2.06765,0.02924 3.99087,-1.05709 5.03322,-2.843c1.04236,-1.78592 1.04236,-3.99474 0,-5.78066c-1.04236,-1.78592 -2.96558,-2.87225 -5.03322,-2.843h-34.32161c-0.00001,-1.53421 -0.61486,-3.00442 -1.70704,-4.08187c-1.09219,-1.07746 -2.57061,-1.67228 -4.10468,-1.65146zM34.4,45.86667v91.73333c0,6.33533 5.13133,11.46667 11.46667,11.46667h80.26667c6.33533,0 11.46667,-5.13133 11.46667,-11.46667v-91.73333z"></path></g></g></svg>
+      </article>
+
+      <article class="enlaces">
+        <h5><a href="">BBC News - World</a></h5>
+        <svg id="btnEliminar"xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+  width="30" height="30"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M74.53333,17.2c-1.53406,-0.02082 -3.01249,0.574 -4.10468,1.65146c-1.09219,1.07746 -1.70703,2.54767 -1.70704,4.08187h-34.32161c-2.06765,-0.02924 -3.99087,1.05709 -5.03322,2.843c-1.04236,1.78592 -1.04236,3.99474 0,5.78066c1.04236,1.78592 2.96558,2.87225 5.03322,2.843h103.2c2.06765,0.02924 3.99087,-1.05709 5.03322,-2.843c1.04236,-1.78592 1.04236,-3.99474 0,-5.78066c-1.04236,-1.78592 -2.96558,-2.87225 -5.03322,-2.843h-34.32161c-0.00001,-1.53421 -0.61486,-3.00442 -1.70704,-4.08187c-1.09219,-1.07746 -2.57061,-1.67228 -4.10468,-1.65146zM34.4,45.86667v91.73333c0,6.33533 5.13133,11.46667 11.46667,11.46667h80.26667c6.33533,0 11.46667,-5.13133 11.46667,-11.46667v-91.73333z"></path></g></g></svg>
+    </article>
+
+    <article class="enlaces">
+      <h5><a href="">BBC News - World</a></h5>
+      <svg id="btnEliminar"xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="30" height="30"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M74.53333,17.2c-1.53406,-0.02082 -3.01249,0.574 -4.10468,1.65146c-1.09219,1.07746 -1.70703,2.54767 -1.70704,4.08187h-34.32161c-2.06765,-0.02924 -3.99087,1.05709 -5.03322,2.843c-1.04236,1.78592 -1.04236,3.99474 0,5.78066c1.04236,1.78592 2.96558,2.87225 5.03322,2.843h103.2c2.06765,0.02924 3.99087,-1.05709 5.03322,-2.843c1.04236,-1.78592 1.04236,-3.99474 0,-5.78066c-1.04236,-1.78592 -2.96558,-2.87225 -5.03322,-2.843h-34.32161c-0.00001,-1.53421 -0.61486,-3.00442 -1.70704,-4.08187c-1.09219,-1.07746 -2.57061,-1.67228 -4.10468,-1.65146zM34.4,45.86667v91.73333c0,6.33533 5.13133,11.46667 11.46667,11.46667h80.26667c6.33533,0 11.46667,-5.13133 11.46667,-11.46667v-91.73333z"></path></g></g></svg>
+  </article>
+        </div>
         
-        </button>
-        <ul id="lista_enlaces"></ul>
       </section>
       <section id="noticias">
-        <h2 id="titulo">Titulo</h2>
-        <img src="recursos/actualizar.svg" alt="*" width="30" />
-        <ul id="lista_noticias"></ul>
-        <h3>No hay noticias</h3>
+        <section id="flex-titulo">
+          <h2 id="titulo">BBC News - World</h2>
+          <img src="recursos/actualizar.svg" alt="*" width="30" id="btn-actualizar"/>
+          </section>
+          <section id="flex-noticias">
+            <section id="lista_noticias">
+              
+
+                <article class="tarjeta">
+                    <div class="image">
+                      <img src="https://unsplash.it/100/100?image=503" alt="">
+                    </div>
+                    <div class="informacion">
+                      <h3>Ukraine invasion: West imposes sanctions on Russia's Putin and Lavrov</h3>
+                      Publicado el <time datetime="2012-10-15T12:00">15 de octubre de 2012 a las 12h</time>
+                      <p>The US, EU, UK and Canada freeze the assets of the Russian president and his foreign minister over Ukraine.</p>
+                      <button  id="btnVisitar"><a href="">Visita sitio web</a></button>
+                    </div>
+                </article>
+
+                <article class="tarjeta">
+                  <div class="image">
+                    <img src="https://unsplash.it/100/100?image=503" alt="">
+                  </div>
+                  <div class="informacion">
+                    <h3>Ukraine invasion: West imposes sanctions on Russia's Putin and Lavrov</h3>
+                    Publicado el <time datetime="2012-10-15T12:00">15 de octubre de 2012 a las 12h</time>
+                    <p>The US, EU, UK and Canada freeze the assets of the Russian president and his foreign minister over Ukraine. </p>
+                    <button  id="btnVisitar"><a href="">Visita sitio web</a></button>
+                  </div>
+              </article>
+
+              <article class="tarjeta">
+                <div class="image">
+                  <img src="https://unsplash.it/100/100?image=503" alt="">
+                </div>
+                <div class="informacion">
+                  <h3>Ukraine invasion: West imposes sanctions on Russia's Putin and Lavrov</h3>
+                  Publicado el <time datetime="2012-10-15T12:00">15 de octubre de 2012 a las 12h</time>
+                  <p>The US, EU, UK and Canada freeze the assets of the Russian president and his foreign minister over Ukraine.</p>
+                  <button  id="btnVisitar"><a href="">Visita sitio web</a></button>
+                </div>
+            </article>
+
+            <article class="tarjeta">
+              <div class="image">
+                <img src="https://unsplash.it/100/100?image=503" alt="">
+              </div>
+              <div class="informacion">
+                <h3>Ukraine invasion: West imposes sanctions on Russia's Putin and Lavrov</h3>
+                Publicado el <time datetime="2012-10-15T12:00">15 de octubre de 2012 a las 12h</time>
+                <p>The US, EU, UK and Canada freeze the assets of the Russian president and his foreign minister over Ukraine.</p>
+                <button id="btnVisitar"><a href="">Visita sitio web</a></button>
+              </div>
+          </article>
+
+          <article class="tarjeta">
+            <div class="image">
+              <img src="https://unsplash.it/100/100?image=503" alt="">
+            </div>
+            <div class="informacion">
+              <h3>Ukraine invasion: West imposes sanctions on Russia's Putin and Lavrov</h3>
+              Publicado el <time datetime="2012-10-15T12:00">15 de octubre de 2012 a las 12h</time>
+              <p>The US, EU, UK and Canada freeze the assets of the Russian president and his foreign minister over Ukraine.</p>
+              <button  id="btnVisitar"><a href="">Visita sitio web</a></button>
+            </div>
+        </article>
+
+        <article class="tarjeta">
+          <div class="image">
+            <img src="https://unsplash.it/100/100?image=503" alt="">
+          </div>
+          <div class="informacion">
+            <h3>Ukraine invasion: West imposes sanctions on Russia's Putin and Lavrov</h3>
+            Publicado el <time datetime="2012-10-15T12:00">15 de octubre de 2012 a las 12h</time>
+            <p>The US, EU, UK and Canada freeze the assets of the Russian president and his foreign minister over Ukraine.</p>
+            <button  id="btnVisitar"><a href="">Visita sitio web</a></button>
+          </div>
+      </article>
+
+      <article class="tarjeta">
+        <div class="image">
+          <img src="https://unsplash.it/100/100?image=503" alt="">
+        </div>
+        <div class="informacion">
+          <h3>Ukraine invasion: West imposes sanctions on Russia's Putin and Lavrov</h3>
+          Publicado el <time datetime="2012-10-15T12:00">15 de octubre de 2012 a las 12h</time>
+          <p>The US, EU, UK and Canada freeze the assets of the Russian president and his foreign minister over Ukraine.</p>
+          <button  id="btnVisitar"><a href="">Visita sitio web</a></button>
+        </div>
+    </article>
+
+            </section>
+          </section>
+        <!--<h3 id="noNoticias">No hay noticias</h3>-->
       </section>
     </main>
 
     <!-- Modal -->
     <div
-      class="modal fade"
+      class="modal fade "
       id="exampleModal"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
+
     >
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ingresar url</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Ingresar URL</h5>
             <button
               type="button"
               class="close"
@@ -73,7 +201,7 @@
             </button>
           </div>
           <div class="modal-body">
-              <input type="text" name="" id="url_modal" placeholder="Url">
+              <input type="text" name="" id="url_modal" placeholder="URL">
           </div>
           <div class="modal-footer">
             <button
@@ -83,14 +211,13 @@
             >
               Cerrar
             </button>
-            <button type="button" class="btn btn-primary" id="guardar_url">Guardar url</button>
+            <button type="button" class="btn btn-primary" id="guardar_url">Guardar URL</button>
           </div>
         </div>
       </div>
     </div>
 
     <footer></footer>
-
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
