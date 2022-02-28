@@ -3,45 +3,63 @@ const nombreSitio = document.getElementById("titulo");
 const btnGuardarUrl = document.getElementById("guardar_url");
 const lista_url = document.getElementsByClassName("div_lista");
 const lista_noticias = document.getElementById('lista_noticias');
+const btnEnlace = document.getElementsByClassName("btnEnlace");
+const btnActualizar = document.getElementById("btn-actualizar");
+let global = "";
 
-btnGuardarUrl.addEventListener("click", mostrarUrl);
-
+btnGuardarUrl.addEventListener("click", agregarUrl);
+btnActualizar.addEventListener("click",actualizarPage);
 window.onload = mostrar;
 
 function mostrar() {
-  let content = makeRequest("mostrarUrl.php", "");
+  makeRequest("mostrarUrl.php?q=mostrar");
+  let content = global;
   if (content) {
-
+    content = JSON.parse(global);
+    lista_url[0].innerHTML = content.enlace;
+    asignarEventoBoton();
   } else {
     console.log("No hay nada!");
   }
 }
 
-
-function mostrarUrl() {
-  let url = document.getElementById("url_modal").value;
-  let content = makeRequest("agregarUrl.php?q=", url);
-  console.log(content);
-  /*if (validURL(url)) {
-    makeRequest(url);
-  } else {
-    alert("Url invalida");
-  }*/
+function actualizarPage(){  
+ //por definir location.reload();
+ 
 }
 
-function makeRequest(nombrearchivo, url) {
+function asignarEventoBoton() {
+    for (let i = 0; i < btnEnlace.length; i++) {
+      btnEnlace[i].addEventListener("click", mostrarNoticias);
+    }
+}
+
+
+// La idea es obtener una vez, guardar en arreglo para no tener que volver a llamar
+function mostrarNoticias() {
+  // this.textContent te muestra el valor del h5
+    makeRequest("mostrarNoticias.php?q=" + this.textContent);
+    let content = JSON.parse(global);
+    nombreSitio.innerHTML = this.textContent;
+    lista_noticias.innerHTML = content.noticias;
+}
+
+
+function agregarUrl() {
+  let url = document.getElementById("url_modal").value;
+  makeRequest("agregarUrl.php?q=" + url);
+  mostrar();
+}
+
+
+function makeRequest(nombrearchivo) {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      console.log("1");
-      return this.responseText;
-      /*let rss = JSON.parse(this.responseText);
-      nombreSitio.innerHTML = rss.sitio;
-      lista_url[0].innerHTML = rss.enlace;
-      lista_noticias.innerHTML = rss.noticias;*/
+      global = this.responseText;
     }
   };
-  xmlhttp.open("GET", nombrearchivo + url, true);
+  xmlhttp.open("GET", nombrearchivo, false);
   xmlhttp.send();
 }
 

@@ -181,14 +181,15 @@ main{
     
 }
 
-.enlaces h5 a {
+.enlaces h5{
     text-decoration: none;
     color: #FFFFFF;
-    font-size: .8em;
+    font-size: 1em;
 }
 
-.enlaces h5 a:hover {
+.enlaces h5:hover {
     color: rgba(36,111,42,255);
+    cursor: pointer;
 }
 
 #btnEliminar g:hover {

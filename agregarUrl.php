@@ -1,21 +1,6 @@
 <?php
-
+require("db.php");
 $url = $_GET['q'];
-
-echo $url;
-
-$username = "root";
-$password = "";
-$database = "rssfeed";
-
-$conn = mysqli_connect("localhost", $username, $password, $database); 
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-echo "Connected successfully";
-
 
 
 if (@simplexml_load_file($url)) {
@@ -59,6 +44,7 @@ if (@simplexml_load_file($url)) {
         $i++;
         
         }
+        mysqli_close($conn);
 
         echo "Se agregaron las noticias.";
     }

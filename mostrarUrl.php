@@ -1,33 +1,27 @@
 <?php
 
-$username = "root";
-$password = "";
-$database = "rssfeed";
-
-if (mysqli_query($conn, $sql)) {
-      //echo "New record created successfully";
-} else {
-      //echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
+require("db.php");
+$comando = $_GET['q'];
 
 
 //  Obtener enlaces desde la base de datos y mostrarlos
 $sql = "SELECT nombre FROM urls";
 $result = mysqli_query($conn, $sql);
 $enlace = "";
+
 while ($row = $result->fetch_array()) {
   $enlace .= mostrarEnlaces($row['nombre']);
 }
 
 $arr = ["enlace" => $enlace];
-
+mysqli_close($conn);
 echo json_encode($arr);
 
 
 function mostrarEnlaces($nombre) {
   $enlace = <<<_END
   <article class="enlaces">
-          <h5 class="btnEnlace"><a href="">$nombre</a></h5>
+          <h5 class="btnEnlace">$nombre</h5>
           <svg
             id="btnEliminar"
             xmlns="http://www.w3.org/2000/svg"
@@ -64,9 +58,6 @@ function mostrarEnlaces($nombre) {
             </g>
           </svg>
         </article>
-        <script>
-        
-        </script>
   _END;
 
   return $enlace;

@@ -1,8 +1,5 @@
 <?php
-$username = "root";
-$password = "";
-$database = "rssfeed";
-
+require("db.php");
 
 $url = $_GET['q'];
 
@@ -11,8 +8,8 @@ if (@simplexml_load_file($url)) {
    } else {
         $invalidurl = true;
         echo "Invalid RSS feed URL";
-   }
-  
+   }   
+   echo "Connected successfully";
   
    $i=0;
    if (!empty($feeds)) {
