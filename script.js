@@ -8,8 +8,6 @@ btnGuardarUrl.addEventListener("click", mostrarUrl);
 
 window.onload = mostrar;
 
-
-
 function mostrar() {
   let content = makeRequest("mostrarUrl.php", "");
   if (content) {
@@ -23,6 +21,7 @@ function mostrar() {
 function mostrarUrl() {
   let url = document.getElementById("url_modal").value;
   let content = makeRequest("agregarUrl.php?q=", url);
+  console.log(content);
   /*if (validURL(url)) {
     makeRequest(url);
   } else {
@@ -34,6 +33,7 @@ function makeRequest(nombrearchivo, url) {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
+      console.log("1");
       return this.responseText;
       /*let rss = JSON.parse(this.responseText);
       nombreSitio.innerHTML = rss.sitio;
