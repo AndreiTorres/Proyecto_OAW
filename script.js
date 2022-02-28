@@ -4,14 +4,25 @@ const btnGuardarUrl = document.getElementById("guardar_url");
 const lista_url = document.getElementsByClassName("div_lista");
 const lista_noticias = document.getElementById('lista_noticias');
 
-
-
-
 btnGuardarUrl.addEventListener("click", mostrarUrl);
+
+window.onload = mostrar;
+
+
+
+function mostrar() {
+  let content = makeRequest("mostrarUrl.php", "");
+  if (content) {
+
+  } else {
+    console.log("No hay nada!");
+  }
+}
+
 
 function mostrarUrl() {
   let url = document.getElementById("url_modal").value;
-  makeRequest(url);
+  let content = makeRequest("agregarUrl.php?q=", url);
   /*if (validURL(url)) {
     makeRequest(url);
   } else {
@@ -19,18 +30,18 @@ function mostrarUrl() {
   }*/
 }
 
-function makeRequest(url) {
+function makeRequest(nombrearchivo, url) {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      //console.log(this.responseText);
-      let rss = JSON.parse(this.responseText);
+      return this.responseText;
+      /*let rss = JSON.parse(this.responseText);
       nombreSitio.innerHTML = rss.sitio;
       lista_url[0].innerHTML = rss.enlace;
-      lista_noticias.innerHTML = rss.noticias;
+      lista_noticias.innerHTML = rss.noticias;*/
     }
   };
-  xmlhttp.open("GET", "procesar.php?q=" + url, true);
+  xmlhttp.open("GET", nombrearchivo + url, true);
   xmlhttp.send();
 }
 
@@ -47,7 +58,9 @@ function validURL(str) {
   return !!pattern.test(str);
 }
 
+
+/*
 function borrar(event){
   let nombreEnlace =  event.target.parentNode.firsstChild.firstChild.value;
 
-}
+}*/
