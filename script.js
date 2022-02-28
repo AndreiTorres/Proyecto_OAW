@@ -4,12 +4,14 @@ const btnGuardarUrl = document.getElementById("guardar_url");
 const lista_url = document.getElementsByClassName("div_lista");
 const lista_noticias = document.getElementById('lista_noticias');
 
+
+
+
 btnGuardarUrl.addEventListener("click", mostrarUrl);
 
 function mostrarUrl() {
   let url = document.getElementById("url_modal").value;
   makeRequest(url);
-
   /*if (validURL(url)) {
     makeRequest(url);
   } else {
@@ -21,6 +23,7 @@ function makeRequest(url) {
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
+      //console.log(this.responseText);
       let rss = JSON.parse(this.responseText);
       nombreSitio.innerHTML = rss.sitio;
       lista_url[0].innerHTML = rss.enlace;
@@ -42,4 +45,9 @@ function validURL(str) {
     "i"
   );
   return !!pattern.test(str);
+}
+
+function borrar(event){
+  let nombreEnlace =  event.target.parentNode.firsstChild.firstChild.value;
+
 }
