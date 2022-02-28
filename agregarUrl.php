@@ -39,6 +39,13 @@ if (@simplexml_load_file($url)) {
         $description = $item->description;
         $postDate = $item->pubDate;
         $pubDate = date('D, d M Y',strtotime($postDate));
+        
+        // Limpia las cadenas antes de ingresarlas a la bd
+        $titulo = mysqli_real_escape_string( $conn, $titulo);
+        $link = mysqli_real_escape_string( $conn, $link);
+        $description = mysqli_real_escape_string($conn, $description);
+        $pubDate = mysqli_real_escape_string($conn, $pubDate);
+
         $sql = "INSERT INTO noticias (titulo, link, descripcion, fecha, id_url) VALUES ('".$titulo."', '".$link."', '".$description."','".$pubDate."','".$id_url."')";
         $result = mysqli_query($conn, $sql);
         $i++;
