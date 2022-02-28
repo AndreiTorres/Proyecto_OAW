@@ -23,7 +23,7 @@ function mostrarEnlaces($nombre) {
   <article class="enlaces">
           <h5 class="btnEnlace">$nombre</h5>
           <svg
-            id="btnEliminar"
+            class="btnEliminar"
             xmlns="http://www.w3.org/2000/svg"
             x="0px"
             y="0px"
@@ -34,6 +34,7 @@ function mostrarEnlaces($nombre) {
             
           >
             <g
+              class="btnBorrar"
               fill="none"
               fill-rule="nonzero"
               stroke="none"

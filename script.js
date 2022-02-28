@@ -5,6 +5,7 @@ const lista_url = document.getElementsByClassName("div_lista");
 const lista_noticias = document.getElementById('lista_noticias');
 const btnEnlace = document.getElementsByClassName("btnEnlace");
 const btnActualizar = document.getElementById("btn-actualizar");
+var noticiaActualSeleccionada;
 let global = "";
 
 btnGuardarUrl.addEventListener("click", agregarUrl);
@@ -18,6 +19,7 @@ function mostrar() {
     content = JSON.parse(global);
     lista_url[0].innerHTML = content.enlace;
     asignarEventoBoton();
+    agregarEventoBorrar();
   } else {
     console.log("No hay nada!");
   }
@@ -42,6 +44,7 @@ function mostrarNoticias() {
     let content = JSON.parse(global);
     nombreSitio.innerHTML = this.textContent;
     lista_noticias.innerHTML = content.noticias;
+    noticiaActualSeleccionada =  this.textContent;
 }
 
 
@@ -76,9 +79,19 @@ function validURL(str) {
   return !!pattern.test(str);
 }
 
+function agregarEventoBorrar(){
+  const btnEliminar = document.getElementsByClassName("btnEliminar");
+  for(let i=0; i<btnEliminar.length; i++){
+    btnEliminar[i].addEventListener("click", borrar);
+  }
+}
 
-/*
-function borrar(event){
-  let nombreEnlace =  event.target.parentNode.firsstChild.firstChild.value;
-
-}*/
+function borrar(){
+  let nombreEnlace = this.parentNode.childNodes;
+  makeRequest("delete.php?q=" + nombreEnlace[1].textContent);
+  if((typeof noticiaActualSeleccionada !== 'undefined') && (noticiaActualSeleccionada == nombreEnlace[1].textContent)){
+    nombreSitio.innerHTML = "";
+    lista_noticias.innerHTML = "";
+  }
+  mostrar();
+}
