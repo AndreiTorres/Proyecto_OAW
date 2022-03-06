@@ -95,3 +95,14 @@ function borrar(){
   }
   mostrar();
 }
+
+function ordenar(){
+  let select = document.getElementById("selectOrden");
+  let metodoOrdenamiento = select.value;
+
+  makeRequest("ordenamiento.php?q=" + nombreSitio.textContent + "&p=" + metodoOrdenamiento);
+  let content = JSON.parse(global);
+
+  lista_noticias.innerHTML = content.noticias;
+
+}
