@@ -1,15 +1,6 @@
 <?php
+//if(!isset($_POST['search'])) exit('No se recibió el valor a buscar');
 
-if(!isset($_POST['search'])) exit('No se recibió el valor a buscar');
-
-/*
-function getConnexion()
-{
-  $mysqli = new Mysqli('localhost', 'root', '', 'rssfeed');
-  if($mysqli->connect_errno) exit('Error en la conexión: ' . $mysqli->connect_errno);
-  $mysqli->set_charset('utf8');
-  return $mysqli;
-}*/
 function search()
 {
   require("db.php"); 
@@ -24,19 +15,15 @@ function search()
         
     }    
   }
-  $query .= "LIMIT 5";
+  $query .= "LIMIT 7";
 
   $res = $conn->query($query);
   $noticias="";
   while ($row = $res->fetch_array(MYSQLI_ASSOC)) {
-    $noticias .= mostrar($row['titulo'], $row['link'], $row["descripcion"], $row['fecha']);
-    echo ("
-    <p><a target='_blank'>$row[titulo]</a></p>
-    
-    ");
+    $noticias .= mostrar($row['titulo'], $row['link'], $row["descripcion"], $row['fecha']);   
   }
   $arr = ["noticias" => $noticias];
-echo json_encode($arr);
+  echo json_encode($arr);
 
 }
 function mostrar($titulo, $link, $descripcion, $fecha) { 

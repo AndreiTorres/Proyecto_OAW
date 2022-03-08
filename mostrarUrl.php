@@ -14,9 +14,9 @@ while ($row = $result->fetch_array()) {
 }
 
 $arr = ["enlace" => $enlace];
-mysqli_close($conn);
-echo json_encode($arr);
 
+echo json_encode($arr);
+mysqli_close($conn);
 
 function mostrarEnlaces($nombre) {
   $enlace = <<<_END

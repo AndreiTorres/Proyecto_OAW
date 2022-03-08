@@ -19,6 +19,7 @@ function mostrar() {
   makeRequest("mostrarUrl.php?q=mostrar");
   let content = global;
   if (content) {
+   
     content = JSON.parse(global);
     lista_url[0].innerHTML = content.enlace;
     asignarEventoBoton();
@@ -26,11 +27,12 @@ function mostrar() {
   } else {
     console.log("No hay nada!");
   }
+  
 }
 
 function actualizarPage(){  
- //por definir location.reload();
- 
+  //Falta Definir
+  location.reload(); 
 }
 
 function asignarEventoBoton() {
@@ -82,8 +84,7 @@ function validURL(str) {
   return !!pattern.test(str);
 }
 
-function agregarEventoBorrar(){
-  
+function agregarEventoBorrar(){  
   const btnEliminar = document.getElementsByClassName("btnEliminar");
   for(let i=0; i<btnEliminar.length; i++){
     btnEliminar[i].addEventListener("click", borrar);
@@ -102,20 +103,21 @@ function borrar(){
 function asignarEventoBuscar(){
   let palabras = document.getElementById("campo_buscar").value;
   makeRequest("buscador.php?q=" + palabras);
- 
-
-  
+  let content = global;
+  if (content) {   
+    content = JSON.parse(global);
+    lista_noticias.innerHTML= content.noticias;    
+  } else {
+    console.log("No hay nada!");
+  }
   
 }
 function ordenar(){
   let select = document.getElementById("selectOrden");
   let metodoOrdenamiento = select.value;
-
   makeRequest("ordenamiento.php?q=" + nombreSitio.textContent + "&p=" + metodoOrdenamiento);
   let content = JSON.parse(global);
-
   lista_noticias.innerHTML = content.noticias;
-
 }
 /*
 $(document).ready(function(){
