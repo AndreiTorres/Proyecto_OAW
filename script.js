@@ -5,11 +5,14 @@ const lista_url = document.getElementsByClassName("div_lista");
 const lista_noticias = document.getElementById('lista_noticias');
 const btnEnlace = document.getElementsByClassName("btnEnlace");
 const btnActualizar = document.getElementById("btn-actualizar");
+const btnBuscar = document.getElementById("btnBuscador");
+const campoBuscar = document.getElementById("campo_buscar");
 var noticiaActualSeleccionada;
 let global = "";
 
 btnGuardarUrl.addEventListener("click", agregarUrl);
 btnActualizar.addEventListener("click",actualizarPage);
+btnBuscar.addEventListener("click",asignarEventoBuscar);
 window.onload = mostrar;
 
 function mostrar() {
@@ -80,6 +83,7 @@ function validURL(str) {
 }
 
 function agregarEventoBorrar(){
+  
   const btnEliminar = document.getElementsByClassName("btnEliminar");
   for(let i=0; i<btnEliminar.length; i++){
     btnEliminar[i].addEventListener("click", borrar);
@@ -95,7 +99,14 @@ function borrar(){
   }
   mostrar();
 }
+function asignarEventoBuscar(){
+  let palabras = document.getElementById("campo_buscar").value;
+  makeRequest("buscador.php?q=" + palabras);
+ 
 
+  
+  
+}
 function ordenar(){
   let select = document.getElementById("selectOrden");
   let metodoOrdenamiento = select.value;
@@ -106,3 +117,32 @@ function ordenar(){
   lista_noticias.innerHTML = content.noticias;
 
 }
+/*
+$(document).ready(function(){
+  $(campoBuscar).focus()
+  $(campoBuscar).on('keyup', function(){    
+    var search = $(campoBuscar).val()
+    $.ajax({
+      type: 'POST',
+      url: 'buscador.php',
+      data: {'search': search},
+     
+    })
+   
+     .done(function(resultado){
+       let content = JSON.parse(global);
+      console.log(resultado);
+      console.log("SEPARCION EL SIG ES CONTENT");
+      console.log(content);
+      lista_noticias.innerHTML = content.noticias;
+    
+      $('#lista_noticias').html(resultado)
+    })
+    .fail(function(){
+      alert('Hubo un error :(')
+    })
+
+  })
+})
+*/
+
