@@ -24,15 +24,29 @@ function mostrar() {
     lista_url[0].innerHTML = content.enlace;
     asignarEventoBoton();
     agregarEventoBorrar();
-  } else {
-    console.log("No hay nada!");
+    mostrarNoticiasPrimero();
   }
-  
+}
+
+function mostrarNoticiasPrimero(){
+  if(btnEnlace.length != 0){
+    makeRequest("mostrarNoticias.php?q=" + btnEnlace[0].textContent);
+    let content = JSON.parse(global);
+    nombreSitio.innerHTML = btnEnlace[0].textContent;
+    lista_noticias.innerHTML = content.noticias;
+    noticiaActualSeleccionada =  btnEnlace[0].textContent;
+  }else{
+    lista_noticias.innerHTML = "<h1>No hay noticias<h1>";
+  }
 }
 
 function actualizarPage(){  
-  //Falta Definir
-  location.reload(); 
+  makeRequest("actualizar.php?q=" + nombreSitio.textContent);
+  console.log(global);
+  makeRequest("mostrarNoticias.php?q=" + nombreSitio.textContent);
+  let content = JSON.parse(global);
+  lista_noticias.innerHTML = content.noticias;
+  noticiaActualSeleccionada =  nombreSitio.textContent;
 }
 
 function asignarEventoBoton() {

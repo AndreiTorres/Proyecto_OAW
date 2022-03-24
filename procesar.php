@@ -52,8 +52,10 @@ if (@simplexml_load_file($url)) {
         $link = $item->link;
         $description = $item->description;
         $postDate = $item->pubDate;
+        
         $pubDate = date('D, d M Y',strtotime($postDate));
-        $sql = "INSERT INTO noticias (titulo, link, descripcion, fecha, id_url) VALUES ('".$titulo."', '".$link."', '".$description."','".$pubDate."','".$id_url."')";
+        $categoria = $item->category;
+        $sql = "INSERT INTO noticias (titulo, link, descripcion, fecha, id_url,categoria) VALUES ('".$titulo."', '".$link."', '".$description."','".$pubDate."','".$id_url."','".$categoria."')";
         $result = mysqli_query($conn, $sql);
         $i++;
 

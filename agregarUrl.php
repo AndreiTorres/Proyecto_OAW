@@ -14,10 +14,8 @@ if (@simplexml_load_file($url)) {
    $i=0;
    if (!empty($feeds)) {
     $site = $feeds->channel->title;
-    $sitelink = $feeds->channel->link;
-    
      
-    $sql = "INSERT INTO urls (nombre, enlace) VALUES ('".$site."','". $sitelink."')";
+    $sql = "INSERT INTO urls (nombre, enlace) VALUES ('".$site."','". $url."')";
   
     if (mysqli_query($conn, $sql)) {
           //echo "New record created successfully";
@@ -39,14 +37,29 @@ if (@simplexml_load_file($url)) {
         $description = $item->description;
         $postDate = $item->pubDate;
         $pubDate = date('D, d M Y',strtotime($postDate));
+        $categoria = $item-> category;
+        $pattern = "/<img[^>]+\>/i";
+        preg_match($pattern, $description, $match);
+      if (empty($match)) {
+            $text = "https://unsplash.it/100/100?image=503";
+      } else {
+            $description = str_replace($match[0], "", $description);
+            $pattern = '/src=[\'"]?([^\'" >]+)[\'" >]/';
+            preg_match($pattern, $match[0], $text);
+            $text = $text[1];
+            $text = urldecode($text);
+      }
+      
         
         // Limpia las cadenas antes de ingresarlas a la bd
         $titulo = mysqli_real_escape_string( $conn, $titulo);
         $link = mysqli_real_escape_string( $conn, $link);
         $description = mysqli_real_escape_string($conn, $description);
         $pubDate = mysqli_real_escape_string($conn, $pubDate);
+        $categoria = mysqli_real_escape_string($conn, $categoria);
+        $text = mysqli_real_escape_string($conn, $text);
 
-        $sql = "INSERT INTO noticias (titulo, link, descripcion, fecha, id_url) VALUES ('".$titulo."', '".$link."', '".$description."','".$pubDate."','".$id_url."')";
+        $sql = "INSERT INTO noticias (titulo, link, descripcion, fecha, id_url,categoria,imagen) VALUES ('".$titulo."', '".$link."', '".$description."','".$pubDate."','".$id_url."', '".$categoria."', '".$text."')";
         $result = mysqli_query($conn, $sql);
         $i++;
         
