@@ -14,27 +14,24 @@ $sql = "SELECT * FROM noticias WHERE id_url= '".$id_url."'";
 $result = mysqli_query($conn, $sql);  
 $noticias = "";
 while ($row = $result->fetch_array()) {
-    $noticias .= mostrar($row['titulo'], $row['link'], $row["descripcion"], $row['fecha'],$row['categoria'], $row['imagen']);
+    $noticias .= mostrar($row['titulo'], $row['link'], $row["descripcion"], $row['fecha'], $row['imagen']);
   }
 
 
-  function mostrar($titulo, $link, $descripcion, $fecha,$categoria, $imagen) { 
+  function mostrar($titulo, $link, $descripcion, $fecha, $imagen) { 
     $noticias = <<<_END
     <article class="tarjeta">
     <div class="image">
       <img src="$imagen" alt="" />
     </div>
     <div class="informacion">
-    <h2>
-    $categoria
-    </h2>
+    
       <h3>
         $titulo
       </h3>
       Publicado el
-      <time datetime="2012-10-15T12:00"
-        >$fecha</time
-      >
+      <time datetime="2012-10-15T12:00">$fecha</time>
+      
       <p>
         $descripcion
       </p>

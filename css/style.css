@@ -9,25 +9,42 @@
 }
 
 #cabecera {
-    color: #FFFFFF;
+    color: #ffffff;
     min-height: 15vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(24,24,24,255);
+    background-color: rgb(247, 243, 28);
     border-bottom: 1px solid;
 }
-
+#filtro{
+   
+    background-color: #73ff00;
+    
+}
 #buscador {
+   border: 0;
+    background-color: #18ff2b;
     margin-bottom: 1em;
+    display: flex;
+    align-items: center;
 }
 
+
 #campo_buscar {
+  padding-left: 9px;
     width: 20em;
-    padding: 5px;
-    margin-right: .50em;
-    border-radius: 10px;
+ height: 38px;
+    border-radius: 10px 0px 0px 10px;
+}
+#btnBuscador{
+   
+    width: 5em;
+    height: 38px;
+ border-color:  #00000088 ;
+
+    border-radius: 0px 10px 10px 0px;
 }
 
 /*

@@ -49,7 +49,9 @@ if (@simplexml_load_file($url)) {
             $text = $text[1];
             $text = urldecode($text);
       }
-      
+      if(empty($categoria)){
+            $categoria = "Otros";
+      }
         
         // Limpia las cadenas antes de ingresarlas a la bd
         $titulo = mysqli_real_escape_string( $conn, $titulo);

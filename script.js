@@ -7,12 +7,15 @@ const btnEnlace = document.getElementsByClassName("btnEnlace");
 const btnActualizar = document.getElementById("btn-actualizar");
 const btnBuscar = document.getElementById("btnBuscador");
 const campoBuscar = document.getElementById("campo_buscar");
+const lista_categorias = document.getElementById("div_categorias");
+const btnCategorias = document.getElementById("btnCategorias");
 var noticiaActualSeleccionada;
 let global = "";
 
 btnGuardarUrl.addEventListener("click", agregarUrl);
 btnActualizar.addEventListener("click",actualizarPage);
 btnBuscar.addEventListener("click",asignarEventoBuscar);
+btnCategorias.addEventListener("click",mostrarCategorias);
 window.onload = mostrar;
 
 function mostrar() {
@@ -161,4 +164,20 @@ $(document).ready(function(){
   })
 })
 */
+
+function mostrarCategorias(){
+  makeRequest("mostrarCategoria.php?q=categorias");
+  let content = global;
+  if (content) {
+   
+    content = JSON.parse(global);
+    lista_categorias.innerHTML = content.categories;
+  }else{
+    //a 
+  }
+}
+
+function cargarNoticiasPorCategoria(){
+
+}
 
