@@ -7,12 +7,18 @@ const btnEnlace = document.getElementsByClassName("btnEnlace");
 const btnActualizar = document.getElementById("btn-actualizar");
 const btnBuscar = document.getElementById("btnBuscador");
 const campoBuscar = document.getElementById("campo_buscar");
+const lista_categorias = document.getElementById("div_categorias");
+const btnCategorias = document.getElementById("btnCategorias");
+const btnCerrar = document.getElementById("btnCerrar");
+
 var noticiaActualSeleccionada;
 let global = "";
 
 btnGuardarUrl.addEventListener("click", agregarUrl);
 btnActualizar.addEventListener("click",actualizarPage);
 btnBuscar.addEventListener("click",asignarEventoBuscar);
+btnCategorias.addEventListener("click",mostrarCategorias);
+btnCerrar.addEventListener("click",ocultarbtnCerrar);
 window.onload = mostrar;
 
 function mostrar() {
@@ -120,7 +126,9 @@ function asignarEventoBuscar(){
   let content = global;
   if (content) {   
     content = JSON.parse(global);
-    lista_noticias.innerHTML= content.noticias;    
+    nombreSitio.innerHTML = "Resultados de Busqueda";
+    lista_noticias.innerHTML= content.noticias;  
+    
   } else {
     console.log("No hay nada!");
   }
@@ -161,4 +169,34 @@ $(document).ready(function(){
   })
 })
 */
+
+function mostrarCategorias(){
+  mostrarbtnCerrar()
+  makeRequest("mostrarCategoria.php?q=categorias");
+  let content = JSON.parse(global);
+  lista_categorias.innerHTML = content.categories;
+  
+}
+function mostrarbtnCerrar(){
+  document.getElementById('sec_categorias').style.display = 'block';
+  document.getElementById('btnCerrar').style.display = 'block';
+  
+}
+function ocultarbtnCerrar(){
+  document.getElementById('sec_categorias').style.display = 'none';
+  document.getElementById('btnCerrar').style.display = 'none';
+}
+
+function cargarNoticiasPorCategoria(e){ 
+  const valor =e.value;
+  nombreSitio.innerHTML ="Categoría:  " + valor;
+  makeRequest("mostrarNoticiasPorCategoria.php?q="+valor);
+  let content = global;
+  if (content) {   
+    content = JSON.parse(global);
+    lista_noticias.innerHTML= content.noticias;    
+  } else {
+    console.log("No hay nada!");
+  }
+}
 
