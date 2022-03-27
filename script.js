@@ -186,15 +186,11 @@ function ocultarbtnCerrar(){
   document.getElementById('sec_categorias').style.display = 'none';
   document.getElementById('btnCerrar').style.display = 'none';
 }
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//Falta obtener el valor del boton categoria para que muestre las noticias por categoria
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-function cargarNoticiasPorCategoria(){ 
-  const valor ="";
-  makeRequest("mostrarCategoria.php?q="+valor);
 
+function cargarNoticiasPorCategoria(e){ 
+  const valor =e.value;
+  nombreSitio.innerHTML ="Categoría:  " + valor;
+  makeRequest("mostrarNoticiasPorCategoria.php?q="+valor);
   let content = global;
   if (content) {   
     content = JSON.parse(global);

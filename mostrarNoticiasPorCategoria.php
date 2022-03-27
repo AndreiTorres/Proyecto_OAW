@@ -2,17 +2,12 @@
 require("db.php");
 
 $categoria = $_GET['q'];
-
-
 $sql = "SELECT * FROM noticias WHERE categoria= '".$categoria."'";
 $result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-
 $noticias = "";
 while ($row = $result->fetch_array()) {
     $noticias .= mostrar($row['titulo'], $row['link'], $row["descripcion"], $row['fecha'], $row['imagen']);
   }
-
 
   function mostrar($titulo, $link, $descripcion, $fecha, $imagen) { 
     $noticias = <<<_END
