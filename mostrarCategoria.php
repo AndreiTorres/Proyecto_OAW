@@ -25,9 +25,8 @@ mysqli_close($conn);
 
   function mostrarCategorias($categoria) { 
     $categorias= <<<_END
-    <button type="button"  id="btnCat" class="btn btn-default btn-sm">
-    <span class="caret"></span> $categoria
-  </button>
+
+    <input type="button" value="$categoria"  class="btnCat" id="btnCategory" onclick="cargarNoticiasPorCategoria()">
 _END;
 
 return $categorias;

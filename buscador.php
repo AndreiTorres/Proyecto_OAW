@@ -15,7 +15,7 @@ function search()
         
     }    
   }
-  $query .= "LIMIT 7";
+  $query .= "LIMIT 10";
 
   $res = $conn->query($query);
   $noticias="";
