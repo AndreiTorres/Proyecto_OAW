@@ -76,6 +76,7 @@ function mostrarNoticias() {
 function agregarUrl() {
   let url = document.getElementById("url_modal").value;
   makeRequest("agregarUrl.php?q=" + url);
+  console.log(global);
   mostrar();
 }
 
@@ -120,6 +121,7 @@ function borrar(){
   }
   mostrar();
 }
+
 function asignarEventoBuscar(){
   let palabras = document.getElementById("campo_buscar").value;
   makeRequest("buscador.php?q=" + palabras);

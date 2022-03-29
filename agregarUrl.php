@@ -52,7 +52,7 @@ if (@simplexml_load_file($url)) {
       if(empty($categoria)){
             $categoria = "Otros";
       }
-      $categoria= $categoria.trim();
+      $categoria = trim($categoria);
         
         // Limpia las cadenas antes de ingresarlas a la bd
         $titulo = mysqli_real_escape_string( $conn, $titulo);
