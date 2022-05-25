@@ -1,2 +1,2 @@
 # Proyecto_OAW
-## Version optimizada de lado del cliente
+## Version optimizada final de lado del servidor y del lado del cliente
