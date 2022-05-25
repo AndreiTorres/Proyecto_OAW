@@ -1,8 +1,8 @@
 # Proyecto Optimización de Aplicaciones Web
 
-## Universidad Autónoma de Yucatán
+### Universidad Autónoma de Yucatán
 
-## Versión optimizada final del lado del servidor y del cliente
+### Versión optimizada final del lado del servidor y del cliente
 
 ## Equipo
 
